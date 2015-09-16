@@ -59,24 +59,3 @@ describe('takeTurn', function () {
     expect(takeTurn(1, 0)).to.eql(false);
   });
 });
-
-
-
-describe('playGame', function () {
-
-  it("Expects Player 1 marking position 3 to change gameBoard", function() {
-    expect(playGame(0, 3)).to.eql([0, 9, 9, 0, 1, 9, 9, 9, 9]);
-  });
-
-  it("Expects Player 2 marking position 6 to change gameBoard", function() {
-    expect(playGame(1, 6)).to.eql([0, 9, 9, 0, 1, 9, 1, 9, 9]);
-  });
-
-  it("Expects Player 1 marking position 1 to change gameBoard", function() {
-    expect(playGame(0, 1)).to.eql([0, 0, 9, 0, 1, 9, 1, 9, 9]);
-  });
-
-  it("Expects Player 2 marking position 2 to equal Player 2 Wins", function() {
-    expect(playGame(1, 2)).to.eql("Player 2 Wins!");
-  });
-});
