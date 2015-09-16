@@ -32,8 +32,12 @@ describe('findWinner', function () {
     expect(findWinner([9, 9, 0, 9, 0, 9, 0, 9, 9])).to.equal("Player 1 Wins!");
   });
 
-  it("Expects O in position 0,1,2 to equal Player 9 Wins", function() {
+  it("Expects O in position 0,1,2 to equal Player 2 Wins", function() {
     expect(findWinner([1, 1, 1, 9, 9, 9, 9, 9, 9])).to.equal("Player 2 Wins!");
+  });
+
+  it("Expects non-winning game to return Tie!", function() {
+    expect(findWinner([1, 1, 2, 2, 2, 1, 1, 1, 2])).to.equal("Tie!");
   });
 
   it("Expects non-winning combo to equal 0", function() {
@@ -51,35 +55,28 @@ describe('takeTurn', function () {
     expect(takeTurn(1, 4)).to.eql([0, 9, 9, 9, 1, 9, 9, 9, 9]);
   });
 
+  it("Expects an already marked spot to return false", function() {
+    expect(takeTurn(1, 0)).to.eql(false);
+  });
+});
+
+
+
+describe('playGame', function () {
+
   it("Expects Player 1 marking position 3 to change gameBoard", function() {
-    expect(takeTurn(0, 3)).to.eql([0, 9, 9, 0, 1, 9, 9, 9, 9]);
+    expect(playGame(0, 3)).to.eql([0, 9, 9, 0, 1, 9, 9, 9, 9]);
   });
 
   it("Expects Player 2 marking position 6 to change gameBoard", function() {
-    expect(takeTurn(1, 6)).to.eql([0, 9, 9, 0, 1, 9, 1, 9, 9]);
+    expect(playGame(1, 6)).to.eql([0, 9, 9, 0, 1, 9, 1, 9, 9]);
   });
 
   it("Expects Player 1 marking position 1 to change gameBoard", function() {
-    expect(takeTurn(0, 1)).to.eql([0, 0, 9, 0, 1, 9, 1, 9, 9]);
+    expect(playGame(0, 1)).to.eql([0, 0, 9, 0, 1, 9, 1, 9, 9]);
   });
 
-  it("Expects Player 2 marking position 2 to change gameBoard", function() {
-    expect(takeTurn(1, 2)).to.eql([0, 0, 1, 0, 1, 9, 1, 9, 9]);
-  });
-
-  it("Expects Player 1 marking position 5 to change gameBoard", function() {
-    expect(takeTurn(0, 5)).to.eql([0, 0, 1, 0, 1, 0, 1, 9, 9]);
-  });
-
-  it("Expects Player 2 marking position 7 to change gameBoard", function() {
-    expect(takeTurn(1, 7)).to.eql([0, 0, 1, 0, 1, 0, 1, 1, 9]);
-  });
-
-  it("Expects Player 1 marking position 8 to change gameBoard", function() {
-    expect(takeTurn(0, 8)).to.eql([0, 0, 1, 0, 1, 0, 1, 1, 0]);
-  });
-
-  it("Expects an already marked spot to return false", function() {
-    expect(takeTurn(1, 7)).to.eql(false);
+  it("Expects Player 2 marking position 2 to equal Player 2 Wins", function() {
+    expect(playGame(1, 2)).to.eql("Player 2 Wins!");
   });
 });

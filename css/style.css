@@ -1,3 +1,79 @@
 .showme{
   display: none;
 }
+.container{
+  height: 100%;
+  width: 700px;
+  margin: auto;
+}
+
+.row{
+  width: 100%;
+  overflow:
+}
+
+.c0{
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+  height: 200px;
+  width: 200px;
+  float:left;
+}
+
+.c1{
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+  height: 200px;
+  width: 200px;
+  float:left;
+}
+
+.c2{
+  border-bottom: 5px solid black;
+  height: 200px;
+  width: 200px;
+  float:left;
+}
+
+.c3{
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+  height: 200px;
+  width: 200px;
+  float:left;
+}
+
+.c4{
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+  height: 200px;
+  width: 200px;
+  float:left;
+}
+
+.c5{
+  border-bottom: 5px solid black;
+  height: 200px;
+  width: 200px;
+  float:left;
+}
+
+.c6{
+  border-right: 5px solid black;
+  height: 200px;
+  width: 200px;
+  float:left;
+}
+
+.c7{
+  border-right: 5px solid black;
+  height: 200px;
+  width: 200px;
+  float:left;
+}
+
+.c8{
+  height: 200px;
+  width: 200px;
+  float: left;
+}
