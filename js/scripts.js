@@ -1,3 +1,4 @@
+var winCombos = [[0,4,8], [2,4,6], [3,4,5], [1,4,7], [0,1,2], [6,7,8], [0,3,6], [2,5,8]];
 var gameBoard = [9, 9, 9, 9, 9, 9, 9, 9, 9];
 var winner = 0;
 var turnCount = 1;
@@ -33,7 +34,6 @@ function findWinner(gameBoard) {
 };
 
 function findMove(gameBoard) {
-  var winCombos = [[3,4,5], [1,4,7], [0,4,8], [2,4,6], [0,1,2], [6,7,8], [0,3,6], [2,5,8]];
   var theSums = [];
   var thePlays = [];
   for (var i = 0; i < 8; i++){
@@ -49,7 +49,6 @@ function findMove(gameBoard) {
   var blockPlayer2 = theSums.indexOf(9);
   var match = theSums.indexOf(19);
   var blockPlayer1 = theSums.indexOf(18);
-  //debugger;
   if (gameBoard[4] == 9){
     takeTurn(1, 4);
     return 4;
