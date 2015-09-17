@@ -1,6 +1,9 @@
 var gameBoard = [9, 9, 9, 9, 9, 9, 9, 9, 9];
 var winner = 0;
 var turnCount = 1;
+var players = 1;
+var play;
+
 
 
 function takeTurn(playerId, boardNum) {
@@ -31,40 +34,83 @@ function findWinner(gameBoard) {
 
 $(document).ready(function(){
 
-  $('.col').click(function(){
-    if (winner != 1){ //Checking for game over
-      var currentClass = $(this).attr("class");  //Pulling the class out to get the cell
-      var cell = parseInt(currentClass[1]);  //removing the character that designates a cell
-      var whoTurn = turnCount % 2;
-      if (whoTurn == 1){
+  //For one player game.
+  $(".col").click(function(){
+    if (players == 1){
+      if (winner != 1){
+        var currentClass = $(this).attr("class");  //Pulling the class out to get the cell
+        var cell = parseInt(currentClass[1]);  //removing the character that designates a cell
         var play = takeTurn(0, cell);
-        if (play != false){
+        if (play != false){  // Player One
           $(this).text("X");
-          $(".turn").empty();
-          $(".turn").text("Player " + (whoTurn + 1) + "'s turn.");
-          turnCount++;
         } else {
-          alert("This cell is unavailable");
+            return alert("This cell is unavailable");
+        }
+        var endGame = findWinner(gameBoard);
+        if (endGame != 0){
+          $(".turn").empty();
+          $(".turn").text("Game Over, " + endGame);
+          $(".showme").show();
+          return winner = 1;
+        } else {
+          var compPlay = false;
+          while (compPlay == false){
+            play = Math.floor((Math.random() * 8) + 0)
+            compPlay = takeTurn(1, play);
+          }
+          $(".c" + play).text("O");
+          var endGame = findWinner(gameBoard);
+          if (endGame != 0){
+            $(".turn").empty();
+            $(".turn").text("Game Over, Computer Wins!");
+            $(".showme").show();
+            winner = 1;
+          }
         }
       } else {
-        var play = takeTurn(1, cell);
-        if (play != false){
-          $(this).text("O");
-          $(".turn").empty();
-          $(".turn").text("Player " + (whoTurn + 1) + "'s turn.");
-          turnCount++;
+        //show refresh button, game over
+      }
+
+    }
+  });
+
+  //For two player game.
+  $('.col').click(function(){
+    if (players == 2){
+      if (winner != 1){ //Checking for game over
+        var currentClass = $(this).attr("class");  //Pulling the class out to get the cell
+        var cell = parseInt(currentClass[1]);  //removing the character that designates a cell
+        var whoTurn = turnCount % 2;
+        if (whoTurn == 1){
+          var play = takeTurn(0, cell);
+          if (play != false){
+            $(this).text("X");
+            $(".turn").empty();
+            $(".turn").text("Player " + (whoTurn + 1) + "'s turn.");
+            turnCount++;
+          } else {
+            alert("This cell is unavailable");
+          }
         } else {
-          alert("This cell is unavailable");
+          var play = takeTurn(1, cell);
+          if (play != false){
+            $(this).text("O");
+            $(".turn").empty();
+            $(".turn").text("Player " + (whoTurn + 1) + "'s turn.");
+            turnCount++;
+          } else {
+            alert("This cell is unavailable");
+          }
         }
+        var endGame = findWinner(gameBoard);
+        if (endGame != 0){
+          $(".turn").empty();
+          $(".turn").text("Game Over, " + endGame);
+          winner = 1;
+        }
+      } else {
+        alert("Game is over, Refresh to play again.");
       }
-      var endGame = findWinner(gameBoard);
-      if (endGame != 0){
-        $(".turn").empty();
-        $(".turn").text("Game Over, " + endGame);
-        winner = 1;
-      }
-    } else {
-      alert("Game is over, Refresh to play again.");
     }
   });
 
