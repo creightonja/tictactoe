@@ -1,5 +1,6 @@
 .showme{
   display: none;
+  margin: 20px;
 }
 .container{
   height: 100%;
@@ -10,6 +11,25 @@
 .row{
   width: 100%;
   overflow:
+}
+
+.col{
+  text-align: center;
+  font-size: 150px;
+}
+
+.col span{
+  float: left;
+  padding-top: 13px;
+  padding-left: 48px;
+}
+
+.computer{
+  background-color: green;
+}
+
+.turn{
+  margin: 20px;
 }
 
 .c0{
